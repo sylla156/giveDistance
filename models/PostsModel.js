@@ -18,6 +18,15 @@ constructor(){
    static getR(){
        return this.results;
    }
+
+
+   static set (message) {
+       connection.query('INSERT INTO posts SET  message=?', [message], (error, results) => {
+           if(error) throw error;
+
+           this.results = results;
+       })
+   }
 }
 
 module.exports = PostsModels;
